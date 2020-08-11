@@ -1,0 +1,13 @@
+<view class="logo">
+  <image class="logo-pic" src="/assets/images/sun.svg" />
+  Xiaoba Weather 1.0.0
+</view>
+<view class="more-item">
+  <view class="set">
+   <Icon type="zhuti" />背景设置
+  </view>
+  <view class="set">
+    <Icon type="shouquan"/> 授权管理
+  </view>
+  <view class="set"><Icon type="zuozhe"/>联系作者</view>
+</view>

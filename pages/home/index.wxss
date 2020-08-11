@@ -1,0 +1,22 @@
+
+ .page {
+   /* 井天蓝 #c3d7df*/
+   /* background: #c3d7df; */
+   color: #5e616d;
+ }
+
+.popup {
+  position: absolute;
+  top: 0;
+  left: -750rpx;
+  width: 750rpx;
+  height: 100%;
+  background: rgba(0, 0, 0, .3);
+  transition: transform .3s;
+}
+
+.popup > .popup-content {
+  width: 70%;
+  height: 100%;
+  background: #535d95;
+}

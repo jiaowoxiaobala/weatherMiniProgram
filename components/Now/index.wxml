@@ -1,0 +1,89 @@
+<view class="now-weather weather">
+  <view class="temperature">
+    {{m1.temp(weather.now.temp)}}
+  </view>
+  <view>
+    <Icon type="{{weather.now.icon}}" />{{ weather.now.text }}
+  </view>
+  <view class="humidity-container">
+    <text class="humidity">湿度{{ weather.now.humidity }}%</text>
+    <text class="wind">{{ m1.wind(weather.now.windDir, weather.now.windScale) }}</text>
+  </view>
+  <view class="tip">天气太热了,吃个西瓜吧~</view>
+
+  <view class="two-days">
+    <view class="today">
+      <view class="weather-container">
+        <text>今天</text>
+        <text>{{ today.textDay }}</text>
+      </view>
+      <view class="weather-container">
+        <text>{{ m1.temp(today.tempMin) }}~{{ m1.temp(today.tempMax) }}</text>
+        <Icon type="{{ today.iconDay }}" />
+      </view>
+    </view>
+    <view class="tomorrow">
+      <view class="weather-container">
+        <text>明天</text>
+        <text>{{ tomorrow.textDay }}</text>
+      </view>
+      <view class="weather-container">
+        <text>{{ m1.temp(tomorrow.tempMin) }}~{{ m1.temp(tomorrow.tempMax) }}</text>
+        <Icon type="{{ tomorrow.iconDay }}" />
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="hourly-weather">
+  <!-- 逐时天气 -->
+  <view class="title">逐时天气</view>
+  <scroll-view class="scroll-view" scroll-x>
+    <view class="hourly-weather-item" wx:key="index" wx:for="{{hourly}}">
+      <view class="time">
+        {{ m1.time(item.fxTime) }}
+      </view>
+      <Icon type="{{ item.icon }}" />
+      <view>{{ item.text }}</view>
+      <text>{{ m1.temp(item.temp) }}</text>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="days-weather">
+  <view class="title">15日天气</view>
+    <view class="daily-weather-container {{isSpread && 'is-spread'}}">
+      <view class="daily-weather" wx:key="index" wx:for="{{days}}">
+        <view class="date">
+           <text class="day">今天</text>{{ m1.date(item.fxDate) }}
+        </view>
+        <view class="weather-status">
+          <Icon class="status-icon" type="{{ item.iconDay }}" />{{ item.textDay }}
+        </view>
+        <text>{{ m1.temp(item.tempMin) }}~{{ m1.temp(item.tempMax) }}</text>
+      </view>
+    </view>
+</view>
+
+<wxs module="m1">
+
+  module.exports = {
+    temp: function(str) {
+      str = str || 30;
+      return str + '°'
+    },
+    wind: function(direction, level) {
+      if (!direction) return '无风';
+      return direction + level + '级';
+    },
+    time: function(str) {
+      var start = str.indexOf('T'),
+          end = str.indexOf('+');
+      return str.slice(start + 1, end);
+    },
+    date: function(str) {
+      var index = str.indexOf('-');
+      return str.slice(index + 1);
+    }
+  }
+</wxs>

@@ -1,0 +1,102 @@
+/* components/Now/index.wxss */
+.now-weather {
+  margin: 0 32rpx 32rpx 32rpx;
+  padding: 32rpx 24rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 8rpx;
+}
+
+.hourly-weather,
+.days-weather {
+  margin: 0;
+  background: #fff;
+  color: #333;
+  text-align: left;
+}
+
+.hourly-weather {
+  border-bottom: 20rpx solid #ebebeb;
+  box-shadow: 0 10rpx 30rpx 20rpx #fff;
+}
+
+.title {
+  padding: 24rpx 32rpx 0;
+  font-weight: 600;
+}
+
+.temperature {
+  font-size: 120rpx;
+}
+
+.humidity {
+  padding-right: 10rpx;
+  border-right: 2rpx solid #fff;
+}
+
+.wind {
+  padding-left: 10rpx;
+}
+.two-days {
+  padding-top: 20rpx;
+  display: flex;
+}
+
+.today,
+.tomorrow {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20rpx;
+  width: 50%;
+}
+
+
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 85rpx;
+  text-align: left;
+}
+
+.scroll-view {
+  padding: 0 32rpx;
+  white-space: nowrap;
+}
+.scroll-view::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.hourly-weather-item {
+  padding: 12rpx 32rpx;
+  display: inline-block;
+}
+
+.hourly-weather-item:first-child {
+  padding-left: 0;
+}
+
+.hourly-weather-item:last-child {
+  padding-right: 0;
+}
+
+.daily-weather {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32rpx;
+  height: 96rpx;
+  border-bottom: 1rpx solid #ebebeb;
+}
+
+.daily-weather .day,
+.status-icon {
+  padding-right: 20rpx;
+}
+
+.spread {
+  text-align: center;
+  line-height: 96rpx;
+}

@@ -1,0 +1,28 @@
+/* components/More/index.wxss */
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30rpx 0 60rpx 0;
+  color: #5e616d;
+}
+
+.logo-pic {
+  margin-bottom: 20rpx;
+  width: 96rpx;
+  height: 96rpx;
+}
+.more-item {
+  margin: 0 32rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  color: #5e616d;
+}
+
+.set {
+  margin: 0 24rpx;
+  border-bottom: 1rpx solid #ebebeb;
+  line-height: 80rpx;
+}

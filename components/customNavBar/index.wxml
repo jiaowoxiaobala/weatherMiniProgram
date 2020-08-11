@@ -1,0 +1,8 @@
+<view class="nav-bar" style="height: {{ navBarHeight }}; padding-top:{{ paddingTop }}">
+  <Icon class="menu-icon" type="icon-test" />
+  <view class="location" bindtap="handleLocation">
+    <Icon type="location" />
+    <text class="city">{{ city }}</text>
+  </view>
+</view>
+

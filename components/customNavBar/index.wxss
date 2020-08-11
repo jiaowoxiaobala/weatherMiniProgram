@@ -1,0 +1,22 @@
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  padding: 0 32rpx;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.menu-icon {
+  float: left;
+}
+
+.location {
+  width: 180rpx;
+  margin: 0 auto;
+}
+
+.city {
+  padding-left: 10rpx;
+}

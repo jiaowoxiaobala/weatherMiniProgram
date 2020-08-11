@@ -1,0 +1,30 @@
+
+<NavBar
+bindchangeAddress="handleAddress" 
+city="{{ city }}" />
+
+<view bindtap="{{wxs.handleSlider}}" style="padding-top:{{ paddingTop }}">
+      <Now weather="{{ weather }}" />
+</view>
+
+
+<view class="popup">
+  <view class="popup-content"></view>
+</view>
+<wxs module="wxs">
+  var handleSlider = (function(){
+    var toggle = true;
+    return function(e, ins) {
+      var translate = toggle ? 'translate3d(750rpx, 0, 0)' : '';
+      var popup = ins.selectComponent('.popup');
+      popup.setStyle({
+        transform: translate
+      });
+      toggle = !toggle;
+    }
+  }());
+
+  module.exports = {
+    handleSlider: handleSlider
+  }
+</wxs>

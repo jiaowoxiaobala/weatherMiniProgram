@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "NavBar": "/components/customNavBar",
+    "Now": "/components/Now",
+    "More": "/components/More"
+  }
+}
