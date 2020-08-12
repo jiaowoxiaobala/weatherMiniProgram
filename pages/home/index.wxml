@@ -3,7 +3,8 @@
 bindchangeAddress="handleAddress" 
 city="{{ city }}" />
 
-<view bindtap="{{wxs.handleSlider}}" style="padding-top:{{ paddingTop }}">
+<view style="padding-top:{{ paddingTop }}">
+<view class="icon-weather"></view>
       <Now weather="{{ weather }}" />
 </view>
 

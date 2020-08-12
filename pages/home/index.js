@@ -82,7 +82,11 @@ Page({
   },
   // 获取天气信息
   async handleGetWeather() {
-    const [now, hourly, daily] = await Promise.all([this.request('/weather/now'), this.request('/weather/24h'),this.request('/weather/15d')]);
+    const [now, hourly, daily, indices] = await Promise.all([this.request('/weather/now'),
+    this.request('/weather/24h'),
+    this.request('/weather/7d'),
+    this.request('/indices/1d', { type: '1,3,5,6,9,13' })]);
+    console.log(indices);
     const weather = {
       ...now,
       ...daily,

@@ -4,7 +4,11 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    type: String
+    type: String,
+    useWeather: {
+      type: Boolean,
+      value: true
+    }
   },
 
   /**

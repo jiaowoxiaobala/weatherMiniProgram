@@ -1,2 +1,3 @@
 <!--components/Icon/index.wxml-->
-<text class="iconfont icon-{{type}}" />
+<text wx:if="{{useWeather}}" class="icon-weather icon-{{type}}" />
+<text wx:eles class="iconfont icon-{{type}}"></text>

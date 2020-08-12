@@ -63,7 +63,8 @@
   padding: 0 32rpx;
   white-space: nowrap;
 }
-.scroll-view::-webkit-scrollbar {
+.scroll-view::-webkit-scrollbar,
+.hourly-weather::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;

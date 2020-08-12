@@ -3,15 +3,12 @@ Component({
     weather: {
       type:Object,
       observer: function(data) {
-        console.log(data, '~~~~~~~~~~`')
         this.handleFormData(data);
       }
     }
   },
   methods: {
     handleFormData({ daily, hourly }) {
-      console.log(hourly, '~~~~~~~~')
-      console.log(daily, '~~~~~~~~')
       this.setData({
         today: daily[0],
         tomorrow: daily[1],
@@ -24,8 +21,5 @@ Component({
         isSpread: !this.data.isSpread
       })
     }
-  },
-  data: {
-    isSpread: false
   }
 })
