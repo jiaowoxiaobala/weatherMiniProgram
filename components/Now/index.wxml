@@ -65,6 +65,11 @@
     </view>
 </view>
 
+<!-- 生活值数 -->
+<view class="life-index">
+  <view class="title">生活值数</view>
+</view>
+
 <wxs module="m1">
 
   module.exports = {

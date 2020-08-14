@@ -32,8 +32,8 @@ Component({
             wx.openSetting({
               success: ({ authSetting }) => {
                 authSetting['scope.userLocation'] && wx.chooseLocation({
-                  success: ({address, longitude, latitude}) => {
-                    this.handleChangeAddress({address, longitude, latitude})
+                  success: ({ longitude, latitude }) => {
+                    this.handleChangeAddress({ longitude, latitude })
                   },
                   fail: err => {}
                 });
@@ -41,8 +41,8 @@ Component({
             })
           } else {
             wx.chooseLocation({
-              success: ({address, longitude, latitude}) => {
-                this.handleChangeAddress({address, longitude, latitude})
+              success: ({ longitude, latitude }) => {
+                this.handleChangeAddress({ longitude, latitude })
               },
               fail: err => {}
             });

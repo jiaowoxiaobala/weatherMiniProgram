@@ -5,14 +5,18 @@
   text-align: center;
   color: #fff;
   border-radius: 8rpx;
+  font-family: xiaoba;
+  /* text-shadow: 10rpx 10rpx 10rpx #ccc; */
 }
 
 .hourly-weather,
-.days-weather {
+.days-weather,
+.life-index {
   margin: 0;
   background: #fff;
   color: #333;
   text-align: left;
+  font-family: xiaoba;
 }
 
 .hourly-weather {
