@@ -4,7 +4,7 @@ bindchangeAddress="handleAddress"
 city="{{ city }}" />
 
 <view style="padding-top:{{ paddingTop }}">
-<view class="icon-weather"></view>
       <Now weather="{{ weather }}" />
 </view>
+
 

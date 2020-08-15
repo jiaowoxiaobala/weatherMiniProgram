@@ -1,16 +1,16 @@
 <view class="now-weather weather">
   <view class="temperature">
-    {{m1.temp(weather.now.temp)}}
+    {{wxs.temp(now.temp)}}
+  </view>
+  <view class="center">
+    <Icon class="status-icon" type="{{now.icon}}" />{{ now.text }}
   </view>
   <view>
-    <Icon type="{{weather.now.icon}}" />{{ weather.now.text }}
+    <text class="humidity">湿度{{ now.humidity }}%</text>
+    <text class="wind">{{ wxs.wind(now.windDir, now.windScale) }}</text>
   </view>
-  <view class="humidity-container">
-    <text class="humidity">湿度{{ weather.now.humidity }}%</text>
-    <text class="wind">{{ m1.wind(weather.now.windDir, weather.now.windScale) }}</text>
-  </view>
-  <view class="tip">天气太热了,吃个西瓜吧~</view>
-
+  <view class="tip">你不要淋到雨啦，不然会可爱到发芽~</view>
+ 
   <view class="two-days">
     <view class="today">
       <view class="weather-container">
@@ -18,7 +18,7 @@
         <text>{{ today.textDay }}</text>
       </view>
       <view class="weather-container">
-        <text>{{ m1.temp(today.tempMin) }}~{{ m1.temp(today.tempMax) }}</text>
+        <text>{{ wxs.temp(today.tempMin) }}~{{ wxs.temp(today.tempMax) }}</text>
         <Icon type="{{ today.iconDay }}" />
       </view>
     </view>
@@ -28,7 +28,7 @@
         <text>{{ tomorrow.textDay }}</text>
       </view>
       <view class="weather-container">
-        <text>{{ m1.temp(tomorrow.tempMin) }}~{{ m1.temp(tomorrow.tempMax) }}</text>
+        <text>{{ wxs.temp(tomorrow.tempMin) }}~{{ wxs.temp(tomorrow.tempMax) }}</text>
         <Icon type="{{ tomorrow.iconDay }}" />
       </view>
     </view>
@@ -41,11 +41,11 @@
   <scroll-view class="scroll-view" scroll-x>
     <view class="hourly-weather-item" wx:key="index" wx:for="{{hourly}}">
       <view class="time">
-        {{ m1.time(item.fxTime) }}
+        {{ wxs.time(item.fxTime) }}
       </view>
       <Icon type="{{ item.icon }}" />
       <view>{{ item.text }}</view>
-      <text>{{ m1.temp(item.temp) }}</text>
+      <text>{{ wxs.temp(item.temp) }}</text>
     </view>
   </scroll-view>
 </view>
@@ -55,23 +55,29 @@
     <view class="daily-weather-container {{isSpread && 'is-spread'}}">
       <view class="daily-weather" wx:key="index" wx:for="{{days}}">
         <view class="date">
-           <text class="day">今天</text>{{ m1.date(item.fxDate) }}
+           <text class="day">{{ wxs.dateToWeek(item.fxDate) }}</text>{{ wxs.date(item.fxDate) }}
         </view>
-        <view class="weather-status">
+        <view class="center">
           <Icon class="status-icon" type="{{ item.iconDay }}" />{{ item.textDay }}
         </view>
-        <text>{{ m1.temp(item.tempMin) }}~{{ m1.temp(item.tempMax) }}</text>
+        <text>{{ wxs.temp(item.tempMin) }}~{{ wxs.temp(item.tempMax) }}</text>
       </view>
     </view>
 </view>
 
 <!-- 生活值数 -->
 <view class="life-index">
-  <view class="title">生活值数</view>
+  <view class="title">生活指数</view>
+  <view class="life-index-list">
+    <view class="life-index-item" wx:for="{{life}}" wx:key="index">
+      <Icon type="{{ item.type }}" />
+      <view>{{ wxs.life(item.name) }} - {{ item.category }}</view>
+    </view>
+  </view>
 </view>
 
-<wxs module="m1">
 
+<wxs module="wxs">
   module.exports = {
     temp: function(str) {
       str = str || 30;
@@ -89,6 +95,28 @@
     date: function(str) {
       var index = str.indexOf('-');
       return str.slice(index + 1);
+    },
+    life: function(str) {
+      return str.slice(0,-2);
+    },
+    dateToWeek: function(date) {
+      var num = getDate(date).getDay();
+      switch(num) {
+        case 0:
+        return '星期天';
+        case 1:
+        return '星期一';
+        case 2:
+        return '星期二';
+        case 3:
+        return '星期三';
+        case 4:
+        return '星期四';
+        case 5: 
+        return '星期五';
+        default: 
+        return '星期六'
+      }
     }
   }
 </wxs>

@@ -21,24 +21,18 @@
   padding-left: 10rpx;
 }
 
-.mask {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, .5);
-  z-index: 10;
-}
 
 .menu {
   position: absolute;
-  left: -560rpx;
+  left: -750rpx;
   top: 0;
-  width: 560rpx;
-  height: 100vh;
-  transition: transform .3s;
-  background: skyblue;
   z-index: 20;
+  width: 750rpx;
+  height: 100%;
+  transition: transform .3s;
+  background: #fff;
+}
+
+.menu-img {
+  width: 100%;
 }

@@ -18,7 +18,8 @@ Page({
             wx.authorize({
               scope: 'scope.userLocation',
               // 如果同意
-              success: () => {
+              success: (e) => {
+                console.log(e, '!!!!!!!!!!!!!!!!!!!!!!!!')
                 // 判断手机是否开启了地址位置信息
                 wx.getSystemInfo({
                   success: ({ locationEnabled }) => {
@@ -28,8 +29,13 @@ Page({
                       return
                     }
                     this.handleGetWeather();
+                    this.handleShowTip && this.handleShowTip('未开启定位');
                   }
                 })
+              },
+              fail: () => {
+                this.handleGetWeather();
+                this.handleShowTip && this.handleShowTip('未开启授权');
               }
             })
           } else {
@@ -42,6 +48,7 @@ Page({
                   return
                 }
                 this.handleGetWeather();
+                this.handleShowTip && this.handleShowTip('未开启定位');
               }
             })
           }
@@ -66,7 +73,7 @@ Page({
   handleGetLocation() {
     wx.getLocation({
       // 获取经纬度
-      success({ longitude, latitude }){
+      success: ({ longitude, latitude }) => {
         const { isGetLocation } = this.data;
         this.handleCoordToAddress(longitude, latitude);
         isGetLocation || this.setData({
@@ -81,12 +88,15 @@ Page({
     this.request('/weather/24h'),
     this.request('/weather/7d'),
     this.request('/indices/1d', { type: '1,3,5,6,9,13' })]);
-    console.log(indices);
+    const { daily: life} = indices;
+    console.log(now);
     const weather = {
       ...now,
       ...daily,
-      ...hourly
+      ...hourly,
+      life
     }
+    console.log(weather)
     this.setData({
       weather
     })
@@ -122,5 +132,14 @@ Page({
         this.handleGetWeather();
       }
     })
+  },
+  // 显示定位提示
+  handleShowTip(text) {
+    const tip = wx.getStorageSync('city') ? '为您展示上次定位位置' : '默认展示深圳宝安区';
+    wx.showToast({
+      title: `${text},${tip}`,
+      icon: 'none'
+    });
+    this.handleShowTip = null;
   }
 })

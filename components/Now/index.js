@@ -8,12 +8,15 @@ Component({
     }
   },
   methods: {
-    handleFormData({ daily, hourly }) {
+    handleFormData({ now, daily, hourly, life }) {
+      console.log(daily, '!!!!!!!!!!!!!!')
       this.setData({
         today: daily[0],
         tomorrow: daily[1],
         days: daily,
-        hourly
+        hourly,
+        now,
+        life
       });
     },
     handleSpread() {

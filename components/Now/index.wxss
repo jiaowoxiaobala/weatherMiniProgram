@@ -1,4 +1,11 @@
 /* components/Now/index.wxss */
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .now-weather {
   margin: 0 32rpx 32rpx 32rpx;
   padding: 32rpx 24rpx;
@@ -6,21 +13,25 @@
   color: #fff;
   border-radius: 8rpx;
   font-family: xiaoba;
-  /* text-shadow: 10rpx 10rpx 10rpx #ccc; */
 }
 
 .hourly-weather,
 .days-weather,
 .life-index {
-  margin: 0;
   background: #fff;
   color: #333;
   text-align: left;
   font-family: xiaoba;
 }
 
-.hourly-weather {
+.days-weather {
+  min-height: 746rpx;
+  border-top: 20rpx solid #ebebeb;
   border-bottom: 20rpx solid #ebebeb;
+
+}
+
+.hourly-weather {
   box-shadow: 0 10rpx 30rpx 20rpx #fff;
 }
 
@@ -29,8 +40,12 @@
   font-weight: 600;
 }
 
+.tip {
+  padding-top: 10rpx;
+}
+
 .temperature {
-  font-size: 120rpx;
+  font-size: 140rpx;
 }
 
 .humidity {
@@ -64,7 +79,6 @@
 }
 
 .scroll-view {
-  padding: 0 32rpx;
   white-space: nowrap;
 }
 .scroll-view::-webkit-scrollbar,
@@ -77,15 +91,9 @@
 .hourly-weather-item {
   padding: 12rpx 32rpx;
   display: inline-block;
+  text-align: center;
 }
 
-.hourly-weather-item:first-child {
-  padding-left: 0;
-}
-
-.hourly-weather-item:last-child {
-  padding-right: 0;
-}
 
 .daily-weather {
   display: flex;
@@ -104,4 +112,28 @@
 .spread {
   text-align: center;
   line-height: 96rpx;
+}
+
+
+.life-index-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 32rpx;
+}
+
+
+.life-index-item {
+  margin-top: 24rpx;
+  padding: 12rpx 0;
+  width: 45%;
+  text-align: center;
+  border: 1rpx solid #ebebeb;
+  border-radius: 8rpx;
+}
+
+.life-index {
+  padding-bottom: 32rpx;
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
 }

@@ -42,7 +42,7 @@ Component({
           } else {
             wx.chooseLocation({
               success: ({ longitude, latitude }) => {
-                this.handleChangeAddress({ longitude, latitude })
+                this.handleChangeAddress({ longitude, latitude });
               },
               fail: err => {}
             });

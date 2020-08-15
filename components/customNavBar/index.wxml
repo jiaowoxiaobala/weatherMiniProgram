@@ -1,39 +1,7 @@
 <view class="nav-bar" style="height: {{ navBarHeight }}; padding-top:{{ paddingTop }}">
-  <Icon bindtap="{{ wxs.toggleMenu }}" useWeather="{{ false }}" class="menu-icon" type="icon-test" />
+  <Icon useWeather="{{ false }}" class="menu-icon" type="icon-test" />
   <view class="location" bindtap="handleLocation">
     <Icon type="location" useWeather="{{ false }}" />
     <text class="city">{{ city }}</text>
   </view>
 </view>
-
-<!-- 遮罩层 -->
-<view class="mask" bindtap="{{ wxs.toggleMenu }}"></view>
-
-<!-- 侧边栏 -->
-<view class="menu">
-
-
-</view>
-
-<wxs module="wxs">
-  var toggleMenu = function() {
-    var isToggle = true;
-    return function(e, ins) {
-      var mask = ins.selectComponent('.mask');
-      var menu = ins.selectComponent('.menu');
-      var display = isToggle ? 'block': 'none';
-      var translate = isToggle ? 'translate3d(560rpx, 0, 0)' : 'translate(0)';
-      mask.setStyle({
-        display: display,
-      });
-      menu.setStyle({
-        transform: translate
-      });
-      isToggle = !isToggle;
-    }
-  }();
-
-  module.exports = {
-    toggleMenu: toggleMenu
-  }
-</wxs>
