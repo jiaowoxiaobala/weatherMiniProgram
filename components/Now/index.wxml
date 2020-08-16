@@ -9,7 +9,7 @@
     <text class="humidity">湿度{{ now.humidity }}%</text>
     <text class="wind">{{ wxs.wind(now.windDir, now.windScale) }}</text>
   </view>
-  <view class="tip">你不要淋到雨啦，不然会可爱到发芽~</view>
+  <view class="tip">{{ wxs.weatherToSentence(now.text) }}</view>
  
   <view class="two-days">
     <view class="today">
@@ -117,6 +117,24 @@
         default: 
         return '星期六'
       }
+    },
+    weatherToSentence: function(text) {
+      if (text.indexOf('晴') !== -1) {
+        return '慢慢走，沿途有风景，背后有阳光~'
+      }
+      if (text.indexOf('云') !== -1) {
+        return '今天多云转甜'
+      }
+      if (text.indexOf('雨') !== -1) {
+        return '你不要淋到雨啦，不然会可爱到发芽~'
+      }
+      if (text.indexOf('阴') !== -1) {
+        return '后来，我又遇过很多阴天，却不敢再冒雨去见你一面~'
+      }
+      if (text.indexOf('雪') !== -1) {
+        return '早就和雪花约好在冬天去旅行啦~'
+      }
+      return '这里空空的,啥也没有~'
     }
   }
 </wxs>

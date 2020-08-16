@@ -5,10 +5,11 @@ Page({
     city: '深圳宝安',
     isGetLocation: false,
     paddingTop: '',
+    backgroundColor: 'transparent',
+    navBarColor: '#fff'
   },
   onShow() {
     if (this.data.isGetLocation) return;
-    console.log('onShow执行了~~~~~~~~');
       // 获取用户授权信息
       wx.getSetting({
         success: ({ authSetting }) => {
@@ -19,7 +20,6 @@ Page({
               scope: 'scope.userLocation',
               // 如果同意
               success: (e) => {
-                console.log(e, '!!!!!!!!!!!!!!!!!!!!!!!!')
                 // 判断手机是否开启了地址位置信息
                 wx.getSystemInfo({
                   success: ({ locationEnabled }) => {

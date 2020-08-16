@@ -2,7 +2,6 @@
 <NavBar
 bindchangeAddress="handleAddress" 
 city="{{ city }}" />
-
 <view style="padding-top:{{ paddingTop }}">
       <Now weather="{{ weather }}" />
 </view>

@@ -1,8 +1,5 @@
 const app = getApp();
 Component({
-  data: {
-    
-  },
   properties: {
     city: String
   },
